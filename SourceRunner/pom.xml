@@ -4,7 +4,7 @@
   <groupId>com.leng25.sourcerunner</groupId>
   <artifactId>SourceRunner</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.1-SNAPSHOT</version>
   <name>SourceRunner</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -21,6 +21,20 @@
 <properties>
     <maven.compiler.target>21</maven.compiler.target>
     <maven.compiler.source>21</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
+
+
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>3.0.0-M8</version>
+    </plugin>
+  </plugins>
+</build>
+
+
 
 </project>
