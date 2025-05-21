@@ -21,6 +21,11 @@ public class InMemoryFileManager extends ForwardingJavaFileManager<JavaFileManag
         super(fileManager);
     }
 
+    public Class<?> loadClass(String fullyQualifiedClassName) throws ClassNotFoundException {
+        return getClassLoader(null)
+                .loadClass(fullyQualifiedClassName);
+    }
+
     @Override
     public JavaFileObject getJavaFileForOutput(Location location,
             String className,
@@ -46,5 +51,7 @@ public class InMemoryFileManager extends ForwardingJavaFileManager<JavaFileManag
             }
         };
     }
+
+
 
 }
