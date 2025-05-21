@@ -1,6 +1,7 @@
 com/leng25/sourcerunner/InMemoryCompiler.class
-com/leng25/sourcerunner/InMemoryByteCode.class
 com/leng25/sourcerunner/SourceRunner.class
 com/leng25/sourcerunner/InMemoryFileManager.class
 com/leng25/sourcerunner/InMemorySource.class
 com/leng25/sourcerunner/InMemoryFileManager$1.class
+com/leng25/sourcerunner/LoadedInstance.class
+com/leng25/sourcerunner/InMemoryByteCode.class

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.leng25.sourcerunner.SourceRunnerTest" time="0.457" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.leng25.sourcerunner.SourceRunnerTest" time="0.728" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/home/leng25/.sdkman/candidates/java/21.0.2-tem/lib"/>
-    <property name="sun.java.command" value="/home/leng25/projects/sourceRunner/SourceRunner/target/surefire/surefirebooter-20250520230240225_3.jar /home/leng25/projects/sourceRunner/SourceRunner/target/surefire 2025-05-20T23-02-40_038-jvmRun1 surefire-20250520230240225_1tmp surefire_0-20250520230240225_2tmp"/>
+    <property name="sun.java.command" value="/home/leng25/projects/sourceRunner/SourceRunner/target/surefire/surefirebooter-20250521162712296_3.jar /home/leng25/projects/sourceRunner/SourceRunner/target/surefire 2025-05-21T16-27-12_024-jvmRun1 surefire-20250521162712296_1tmp surefire_0-20250521162712296_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/leng25/projects/sourceRunner/SourceRunner/target/test-classes:/home/leng25/projects/sourceRunner/SourceRunner/target/classes:/home/leng25/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/home/leng25/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/home/leng25/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/leng25/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/home/leng25/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/leng25/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/home/leng25/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/home/leng25/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/leng25/projects/sourceRunner/SourceRunner/target/surefire/surefirebooter-20250520230240225_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/leng25/projects/sourceRunner/SourceRunner/target/surefire/surefirebooter-20250521162712296_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-LTS"/>
     <property name="user.name" value="leng25"/>
@@ -54,7 +54,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="test_base_class" classname="com.leng25.sourcerunner.SourceRunnerTest" time="0.349"/>
-  <testcase name="test_argumetns_class" classname="com.leng25.sourcerunner.SourceRunnerTest" time="0.05"/>
-  <testcase name="test_multi_classes" classname="com.leng25.sourcerunner.SourceRunnerTest" time="0.037"/>
+  <testcase name="test_base_class" classname="com.leng25.sourcerunner.SourceRunnerTest" time="0.523"/>
+  <testcase name="test_argumetns_class" classname="com.leng25.sourcerunner.SourceRunnerTest" time="0.067"/>
+  <testcase name="test_multi_classes" classname="com.leng25.sourcerunner.SourceRunnerTest" time="0.055"/>
+  <testcase name="test_construcutre_class" classname="com.leng25.sourcerunner.SourceRunnerTest" time="0.054"/>
 </testsuite>
