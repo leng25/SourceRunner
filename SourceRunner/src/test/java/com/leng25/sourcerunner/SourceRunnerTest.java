@@ -59,5 +59,23 @@ public class SourceRunnerTest {
         assertEquals("✨ Hello from a String-compiled class!", actual);
     }
 
+    @Test
+    public void test_argumetns_class() {
+
+        String sourceCode = """
+                    package com.example;
+
+                    public class Hello {
+                        public String greet(String greet) {
+                            return greet;
+                        }
+                    }
+                """;
+
+        SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCode));
+        String actual = sourceRunner.run("com.example.Hello","greet","✨ Hello from a String-compiled class!");
+        assertEquals("✨ Hello from a String-compiled class!", actual);
+    }
+
 
 }

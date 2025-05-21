@@ -21,11 +21,20 @@ public class SourceRunner {
         this.fileManager = fileManager;
     }
 
-    public <T> T run(String fullyQualifiteClassName, String methodName) {
+    public <T> T run(String fullyQualifiteClassName, String methodName, Object... args) {
         try {
+            // get Instance
             Class<?> clazz = fileManager.loadClass(fullyQualifiteClassName);
             Object instance = clazz.getDeclaredConstructor().newInstance();
-            Object result = clazz.getMethod(methodName).invoke(instance);
+           
+            // get args Types
+            Class<?>[] paramTypes = new Class<?>[args.length];
+            for (int i = 0; i < args.length; i++) {
+               paramTypes[i] = args[i].getClass(); 
+            }
+            
+            //run
+            Object result = clazz.getMethod(methodName, paramTypes).invoke(instance, args);
             return (T) result;
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException
                 | ClassNotFoundException | InstantiationException e) {
