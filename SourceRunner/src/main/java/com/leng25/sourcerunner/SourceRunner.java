@@ -14,7 +14,6 @@ import javax.tools.ToolProvider;
 public class SourceRunner {
 
     InMemoryFileManager fileManager;
-    Map<String, LoadedInstance> instancMap = new HashMap<>();
 
     public SourceRunner(List<String> sourceCodesList) {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
@@ -23,7 +22,7 @@ public class SourceRunner {
         InMemoryCompiler.compile(sourceCodesList, fileManager);
     }
 
-    public void instanciate(String fullyQualifiteClassName, Object... args) {
+    public Object instanciate(String fullyQualifiteClassName, Object... args) {
         try {
             Class<?> clazz = fileManager.loadClass(fullyQualifiteClassName);
 
@@ -34,8 +33,9 @@ public class SourceRunner {
             }
 
             Object instance = clazz.getDeclaredConstructor(paramTypes).newInstance(args);
+            
+            return instance;
 
-            instancMap.put(fullyQualifiteClassName, new LoadedInstance(clazz, instance));
 
             //LoadedInstance loadedInstance = getLoadedInstance(fullyQualifiteClassName);
 
@@ -46,17 +46,13 @@ public class SourceRunner {
                 | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+		return null;
     }
 
-    public LoadedInstance getLoadedInstance(String fullyQualifiteClassName) {
-        return instancMap.get(fullyQualifiteClassName);
-    }
-
-    public <T> T run(String fullyQualifiteClassName, String methodName, Object... args) {
+    public <T> T run(Object instance, String methodName, Object... args) {
         try {
             // get Instance
-            Class<?> clazz = instancMap.get(fullyQualifiteClassName).clazz;
-            Object instance = instancMap.get(fullyQualifiteClassName).instance;
+            Class<?> clazz = instance.getClass();
 
             // get args Types
             Class<?>[] paramTypes = new Class<?>[args.length];

@@ -25,8 +25,8 @@ public class SourceRunnerTest {
                 """;
 
         SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCode));
-        sourceRunner.instanciate("com.example.Hello");
-        String actual = sourceRunner.run("com.example.Hello", "greet");
+        Object hello = sourceRunner.instanciate("com.example.Hello");
+        String actual = sourceRunner.run(hello, "greet");
         assertEquals("✨ Hello from a String-compiled class!", actual);
     }
 
@@ -55,8 +55,8 @@ public class SourceRunnerTest {
                 """;
 
         SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCodeA, sourceCodeB));
-        sourceRunner.instanciate("com.example.HelloA");
-        String actual = sourceRunner.run("com.example.HelloA", "greet");
+        Object helloA = sourceRunner.instanciate("com.example.HelloA");
+        String actual = sourceRunner.run(helloA, "greet");
         assertEquals("✨ Hello from a String-compiled class!", actual);
     }
 
@@ -74,8 +74,8 @@ public class SourceRunnerTest {
                 """;
 
         SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCode));
-        sourceRunner.instanciate("com.example.Hello");
-        String actual = sourceRunner.run("com.example.Hello", "greet", "✨ Hello from a String-compiled class!");
+        Object hello = sourceRunner.instanciate("com.example.Hello");
+        String actual = sourceRunner.run(hello, "greet", "✨ Hello from a String-compiled class!");
         assertEquals("✨ Hello from a String-compiled class!", actual);
     }
 
@@ -100,8 +100,8 @@ public class SourceRunnerTest {
                 """;
 
         SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCode));
-        sourceRunner.instanciate("com.example.Hello", "✨ Hello from a String-compiled class!");
-        String actual = sourceRunner.run("com.example.Hello", "greet");
+        Object hello = sourceRunner.instanciate("com.example.Hello", "✨ Hello from a String-compiled class!");
+        String actual = sourceRunner.run(hello, "greet");
         assertEquals("✨ Hello from a String-compiled class!", actual);
     }
 
@@ -114,8 +114,8 @@ public class SourceRunnerTest {
                 """;
 
         SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCode));
-        sourceRunner.instanciate("com.example.Hello", "Alice", 30);
-        String actual = sourceRunner.run("com.example.Hello", "name");
+        Object hello = sourceRunner.instanciate("com.example.Hello", "Alice", 30);
+        String actual = sourceRunner.run(hello, "name");
         assertEquals("Alice", actual);
     }
 
@@ -143,11 +143,10 @@ public class SourceRunnerTest {
                 """;
 
         SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCodeA, sourceCodeB));
-        sourceRunner.instanciate("com.example.HelloA");
-        sourceRunner.instanciate("com.example.HelloB");
+        Object helloA = sourceRunner.instanciate("com.example.HelloA");
+        Object helloB = sourceRunner.instanciate("com.example.HelloB");
 
-        LoadedInstance loadedInstance = sourceRunner.getLoadedInstance("com.example.HelloB");
-        String actual = sourceRunner.run("com.example.HelloA", "greet", loadedInstance.instance);
+        String actual = sourceRunner.run(helloA, "greet", helloB);
         assertEquals("✨ Hello from a String-compiled class!", actual);
     }
 
@@ -181,11 +180,10 @@ public class SourceRunnerTest {
                 """;
 
         SourceRunner sourceRunner = new SourceRunner(Arrays.asList(sourceCodeA, sourceCodeB));
-        sourceRunner.instanciate("com.example.HelloA");
-        sourceRunner.instanciate("com.example.HelloB",  "👋 from test");
+        Object helloA = sourceRunner.instanciate("com.example.HelloA");
+        Object helloB = sourceRunner.instanciate("com.example.HelloB",  "👋 from test");
 
-        LoadedInstance loadedInstance = sourceRunner.getLoadedInstance("com.example.HelloB");
-        String actual = sourceRunner.run("com.example.HelloA", "greet", loadedInstance.instance);
+        String actual = sourceRunner.run(helloA, "greet", helloB);
         assertEquals("A says: 👋 from test", actual);
     }
 
