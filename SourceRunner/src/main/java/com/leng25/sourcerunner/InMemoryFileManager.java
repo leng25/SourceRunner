@@ -17,6 +17,23 @@ public class InMemoryFileManager extends ForwardingJavaFileManager<JavaFileManag
 
     private final Map<String, InMemoryByteCode> compiled = new ConcurrentHashMap<>();
 
+
+    private final ClassLoader memoryClassLoader = new ClassLoader(getClass().getClassLoader()) {
+            @Override
+            protected Class<?> findClass(String name) throws ClassNotFoundException {
+                InMemoryByteCode byteCode = compiled.get(name);
+                if (byteCode == null) {
+                    //System.out.println("class bytecode not found looking into parent");
+                    return getParent().loadClass(name);
+                }
+                byte[] bytes = byteCode.getBytes();
+                Class<?> newClass = defineClass(name, bytes, 0, bytes.length);
+                //System.out.println("CREATEING new class Loader "+ name + newClass.getClass() + newClass.getClassLoader());
+                return newClass;
+            }
+        };
+
+
     protected InMemoryFileManager(JavaFileManager fileManager) {
         super(fileManager);
     }
@@ -39,17 +56,7 @@ public class InMemoryFileManager extends ForwardingJavaFileManager<JavaFileManag
 
     @Override
     public ClassLoader getClassLoader(Location location) {
-        return new ClassLoader(getClass().getClassLoader()) {
-            @Override
-            protected Class<?> findClass(String name) throws ClassNotFoundException {
-                InMemoryByteCode byteCode = compiled.get(name);
-                if (byteCode == null) {
-                    return getParent().loadClass(name);
-                }
-                byte[] bytes = byteCode.getBytes();
-                return defineClass(name, bytes, 0, bytes.length);
-            }
-        };
+        return memoryClassLoader; 
     }
 
 
